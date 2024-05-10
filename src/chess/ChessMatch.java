@@ -1,6 +1,10 @@
 package chess;
 
 import boardgame.Board;
+import boardgame.Piece;
+import boardgame.Position;
+import chess.pieces.King;
+import chess.pieces.Rook;
 
 public class ChessMatch {
     
@@ -9,6 +13,7 @@ public class ChessMatch {
     //Instancia, na classe Board, a quantidade de linhas e colunas que irá ter no jogo:
     public ChessMatch(){
         board = new Board(8, 8);
+        initialSetup();
     }
 
     // método que retorna uam matriz de peças do tipo ChessPiece. Esse método serve para 
@@ -21,5 +26,11 @@ public class ChessMatch {
             }
         }
         return mat;
+    }
+
+    private void initialSetup(){
+        board.placePiece(new Rook(board, Color.WHITE), new Position(2,1));
+        board.placePiece(new King(board, Color.BLACK), new Position(0,4));
+        board.placePiece(new King(board, Color.WHITE), new Position(7,4));
     }
 }
